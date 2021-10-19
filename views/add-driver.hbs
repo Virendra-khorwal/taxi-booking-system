@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-6">
+        <h1>Add New Driver</h1>
+    </div>
+</div>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<form class="row g-3 needs-validation" method="POST" action="/admin/addDriver" novalidate>
+
+    {{> driver-form}}
+
+</form>

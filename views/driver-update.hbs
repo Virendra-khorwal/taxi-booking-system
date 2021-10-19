@@ -1,0 +1,11 @@
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+{{#each rows}}
+    <form class="row g-3 needs-validation" method="POST" action="/admin/driverupdate/{{this.driver_id}}" novalidate>
+            {{> driver-form}}
+    </form>
+{{/each}}
