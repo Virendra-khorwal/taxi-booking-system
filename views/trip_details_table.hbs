@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-6">
+        <h1>Trip Details</h1>
+    </div>
+</div>
+
+<table class="table table-dark mt-1">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Starting Date</th>
+            <th scope="col">Ending Date</th>
+            <th scope="col">Customer Id</th>
+            <th scope="col">Taxi Id</th>
+            <th scope="col">Driver Id</th>
+            {{!-- <th scope="col" class="text-end">Action</th> --}}
+
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows}}
+        <tr>
+            <th scope="row">{{this.trip_id}}</th>
+            <th scope="row">{{this.trip_date}}</th>
+            <th scope="row">{{this.trip_amt}}</th>
+            <th scope="row">{{this.cust_id}}</th>
+            <th scope="row">{{this.taxi_id}}</th>
+            <th scope="row">{{this.driver_id}}</th>
+            {{!-- <th scope="row" class="text-end">
+                <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"> View</i></a>
+                <a href="/admin/driverupdate/{{this.driver_id}}" type="button" class="btn btn-light btn-small"><i
+                        class="bi bi-pencil"> Edit</i></a>
+            </th> --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

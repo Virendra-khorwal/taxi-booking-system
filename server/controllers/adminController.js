@@ -48,6 +48,25 @@ exports.viewCus = (req,res) => {
     })
 }
 
+exports.viewTaxi = (req, res) => {
+    pool.getConnection((err, connection) => {
+        if (err) throw err;
+        console.log("Connected as connection id " + connection.threadId);
+
+        connection.query('SELECT * FROM taxi', (err, rows) => {
+
+            connection.release();
+
+            if (!err) {
+                res.render('taxi_table', { rows });
+            } else {
+                console.log(err);
+            }
+        })
+
+    })
+}
+
 exports.viewDriv = (req,res) => {
     pool.getConnection((err, connection) => {
         if (err) throw err;

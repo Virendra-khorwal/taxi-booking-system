@@ -8,6 +8,7 @@ let pool = mysql.createPool({
     database: process.env.DATABASE
 });
 
+
 exports.form = (req, res) => {
     res.render('booking');
 }
@@ -36,17 +37,18 @@ exports.create = (req, res) => {
         if (err) throw err;
         console.log("Connected connection id " + connection.threadId);
 
-
-        connection.query('INSERT into customer SET f_name = ?, l_name = ?, contact_no = ?, email = ?, street = ?, state=?, pincode = ?, taxi_id=?', [first_name, last_name, phone, email, street + ', ' + city + ', ' + district, state, pincode, taxi_id ], (err, rows) => {
-
-            connection.release();
-
+        connection.query('INSERT into customer SET f_name = ?, l_name = ?, contact_no = ?, email = ?, street = ?, state=?, pincode = ?, taxi_id=?', [first_name, last_name, phone, email, street + ', ' + city + ', ' + district, state, pincode, taxi_id], (err, rows) => {
             if (!err) {
-                res.render('booking_form', { alert: 'Taxi Successfully Booked' });
+                console.log('Customer table get all details')
+                connection.release();
             } else {
                 console.log(err);
             }
-        })
+        });
+    });
 
-    })
+}
+
+exports.view = (req, res) => {
+    res.render('trip_details_table');
 }
